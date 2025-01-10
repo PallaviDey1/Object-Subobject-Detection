@@ -64,6 +64,26 @@ FUNCTION detect_objects(video_source):
 
     RETURN convert json_output to JSON format
 
+    
+##Pseudo code for Benchmarking Inference Speed
+
+FUNCTION benchmark_inference(model, video_path):
+    INITIALIZE video_capture(video_path)
+    frame_count = 0
+    start_time = current_time()
+    
+    WHILE video_capture.is_open():
+        frame = video_capture.read_frame()
+        IF NOT frame:
+            BREAK
+        
+        model.infer(frame)
+        frame_count += 1
+    
+    total_time = current_time() - start_time
+    fps = frame_count / total_time
+    PRINT "Total Frames Per Second (FPS): " + fps
+
 
 # pseudocode for adding a new object-subobject pair
 
